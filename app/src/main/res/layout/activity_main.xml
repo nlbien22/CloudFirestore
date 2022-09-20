@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="AddUserViewModel"
+            type="com.example.cloudfirestore.AddUserViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add User"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/purple_500"
+            android:layout_marginTop="32dp"
+            android:textAllCaps="true"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:text="@={AddUserViewModel.username}"
+            android:layout_margin="8dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Passwords"
+            android:text="@={AddUserViewModel.password}"
+            android:inputType="textPassword"
+            android:layout_margin="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:visibility="@{AddUserViewModel.isShowMessage ? View.VISIBLE : View.GONE}"
+            android:text="@{AddUserViewModel.messageAdd}"
+            android:textColor="@{AddUserViewModel.isSuccess ? @color/purple_500 : @color/red_500}"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:textAllCaps="true"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/purple_500"
+            android:text="Add"
+            android:onClick="@{() -> AddUserViewModel.onClickAdd() }"
+            android:layout_margin="16dp"/>
+    </LinearLayout>
+
+</layout>
+
